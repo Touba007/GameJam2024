@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bldpapomjh3lh"]
+
+[ext_resource type="Script" path="res://bloc.gd" id="1_ksfm3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kel5f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrqm4"]
+size = Vector3(6.16921, 3.45905, 1.37244)
+
+[node name="bloc" type="CharacterBody3D"]
+script = ExtResource("1_ksfm3")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(5.89812, 0, 0, 0, 2.4034, 0, 0, 0, 1.26989, 0, 0, 0)
+mesh = SubResource("BoxMesh_kel5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.01096, 0, 0, 0, 0.792032, 0, 0, 0, 1.01096, -0.244884, 0.257897, 0.0529175)
+shape = SubResource("BoxShape3D_lrqm4")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+aabb = AABB(-2.94973, -1.23202, -0.609564, 5.89946, 2.46404, 1.21913)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]

@@ -13,6 +13,7 @@ size = Vector3(7, 2, 60)
 [node name="StaticBody3D_floor" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D_floor"]
+transform = Transform3D(0.996377, 0, 0, 0, 0.996377, 0, 0, 0, 0.996377, 0, 0, 0)
 shape = SubResource("BoxShape3D_32vkd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D_floor"]
@@ -25,9 +26,9 @@ transform = Transform3D(-0.194066, 0.0135924, -2.99369, 0.0129998, 2.99994, 0.01
 transform = Transform3D(-0.0215629, 0.00144443, 0.332632, 0.00151027, 0.333327, -0.00134954, -0.332632, 0.00141979, -0.021569, -8.73279, -0.706199, 0.562897)
 
 [node name="Camera3D" type="Camera3D" parent="player/Marker3D"]
-transform = Transform3D(0.991213, 0.132274, -7.20455e-09, -0.126812, 0.950287, 0.284384, 0.0376165, -0.281885, 0.958711, 3.73769, 7.64236, 42.1069)
+transform = Transform3D(0.997913, -0.039788, -0.0508533, 0.0524799, 0.958623, 0.2798, 0.0376165, -0.281885, 0.958711, 0.669833, 7.01489, 42.1535)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9388, 0)
-light_energy = 6.172
+light_energy = 0.677
 light_volumetric_fog_energy = 12.96
