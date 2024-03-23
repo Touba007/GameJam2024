@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lj4k77km5n4"]
+
+[ext_resource type="PackedScene" uid="uid://clkxiaatx5ti0" path="res://player.tscn" id="1_eu28g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32vkd"]
+size = Vector3(7, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0edka"]
+size = Vector3(7, 2, 60)
+
+[node name="Main" type="Node"]
+
+[node name="StaticBody3D_floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D_floor"]
+shape = SubResource("BoxShape3D_32vkd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D_floor"]
+mesh = SubResource("BoxMesh_0edka")
+
+[node name="player" parent="." instance=ExtResource("1_eu28g")]
+transform = Transform3D(-0.194066, 0.0135924, -2.99369, 0.0129998, 2.99994, 0.0127781, 2.99369, -0.0121459, -0.194121, 0, 2.22489, 26.2439)
+
+[node name="Marker3D" type="Marker3D" parent="player"]
+transform = Transform3D(-0.0215629, 0.00144443, 0.332632, 0.00151027, 0.333327, -0.00134954, -0.332632, 0.00141979, -0.021569, -8.73279, -0.706199, 0.562897)
+
+[node name="Camera3D" type="Camera3D" parent="player/Marker3D"]
+transform = Transform3D(0.991213, 0.132274, -7.20455e-09, -0.126812, 0.950287, 0.284384, 0.0376165, -0.281885, 0.958711, 3.73769, 7.64236, 42.1069)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9388, 0)
+light_energy = 6.172
+light_volumetric_fog_energy = 12.96
