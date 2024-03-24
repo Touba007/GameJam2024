@@ -8,6 +8,8 @@
 size = Vector3(2.97314, 2.15918, 3.12097)
 
 [node name="Bloc" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_6r5nh")
 
 [node name="Node3D" type="Node3D" parent="."]
