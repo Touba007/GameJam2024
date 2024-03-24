@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://yu5nusn7m0gk"]
+[gd_scene load_steps=11 format=3 uid="uid://yu5nusn7m0gk"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_ghon1"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_sf0d4"]
 [ext_resource type="PackedScene" uid="uid://b3xd8bdwcwhlg" path="res://Module/module.tscn" id="2_acncr"]
 [ext_resource type="PackedScene" uid="uid://b0meneuo02s8x" path="res://Module/bloc.tscn" id="2_ujt71"]
 [ext_resource type="PackedScene" uid="uid://clkxiaatx5ti0" path="res://Scenes/player.tscn" id="3_xjd8q"]
+[ext_resource type="PackedScene" uid="uid://bthpsyfdwk6sm" path="res://Module/Wall.tscn" id="6_xyuie"]
 
 [sub_resource type="Curve3D" id="Curve3D_abjes"]
 _data = {
@@ -78,6 +79,12 @@ autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uk52w")
+
+[node name="wall1" parent="." instance=ExtResource("6_xyuie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2486, 0, -7.84764)
+
+[node name="wall2" parent="." instance=ExtResource("6_xyuie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3843, -0.809044, 7.64622)
 
 [connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
