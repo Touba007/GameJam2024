@@ -1,26 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://bldpapomjh3lh"]
 
-[ext_resource type="Script" path="res://bloc.gd" id="1_ksfm3"]
+[ext_resource type="Script" path="res://bloc.gd" id="1_d1vex"]
+[ext_resource type="PackedScene" uid="uid://c5b04lx3mscdl" path="res://art/Model/bloc.glb" id="1_e76lo"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_kel5f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3eet"]
+size = Vector3(10.6644, 5.28235, 5.49628)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lrqm4"]
-size = Vector3(6.16921, 3.45905, 1.37244)
+[node name="Mob" type="CharacterBody3D"]
+script = ExtResource("1_d1vex")
 
-[node name="bloc" type="CharacterBody3D"]
-script = ExtResource("1_ksfm3")
+[node name="Pivot" type="Node3D" parent="."]
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Character" parent="Pivot" instance=ExtResource("1_e76lo")]
+transform = Transform3D(3.43071, 0, 0, 0, 1.95613, 0, 0, 0, 1.90084, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(5.89812, 0, 0, 0, 2.4034, 0, 0, 0, 1.26989, 0, 0, 0)
-mesh = SubResource("BoxMesh_kel5f")
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77684, 0, -0.793685)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.01096, 0, 0, 0, 0.792032, 0, 0, 0, 1.01096, -0.244884, 0.257897, 0.0529175)
-shape = SubResource("BoxShape3D_lrqm4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16856, 2.591, -2.69675)
+shape = SubResource("BoxShape3D_q3eet")
 
-[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
-aabb = AABB(-2.94973, -1.23202, -0.609564, 5.89946, 2.46404, 1.21913)
-
-[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

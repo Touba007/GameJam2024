@@ -6,6 +6,7 @@ extends CharacterBody3D
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 
+@export var jump_impulse = 40
 var target_velocity = Vector3.ZERO
 
 
@@ -16,8 +17,10 @@ func _physics_process(delta):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
+	if is_on_floor() and Input.is_action_pressed("jump") :
+		target_velocity.y = jump_impulse
 
-	direction.z -= 1*delta
+	direction.z -= speed*delta
 	
 
 	if direction != Vector3.ZERO:
