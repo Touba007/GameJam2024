@@ -1,9 +1,0 @@
-res://Scenes/main.tscn
-res://Module/bloc.tscn
-res://Module/module.tscn
-res://Module/Wall.tscn
-res://Scenes/player.tscn
-res://Scripts/player.gd
-res://Module/bloc.gd
-res://Scenes/main.gd
-res://Module/Back_death.tscn
