@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://clkxiaatx5ti0"]
+[gd_scene load_steps=6 format=3 uid="uid://clkxiaatx5ti0"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_0gjm2"]
 [ext_resource type="PackedScene" uid="uid://k2fn5nepkebl" path="res://Assets/perso.glb" id="1_s04e5"]
@@ -10,6 +10,10 @@ height = 3.00486
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jl7cv"]
 radius = 0.777578
 height = 3.14414
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ccj1k"]
+radius = 0.960077
+height = 3.3014
 
 [node name="player" type="CharacterBody3D"]
 collision_mask = 6
@@ -32,4 +36,13 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.624718, 0)
 shape = SubResource("CapsuleShape3D_jl7cv")
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124674, 0.454831, 0.0935588)
+shape = SubResource("CapsuleShape3D_ccj1k")
+
 [connection signal="body_entered" from="Death Detector" to="." method="_on_death_detector_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

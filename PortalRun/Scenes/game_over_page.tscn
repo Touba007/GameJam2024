@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://phkfgclbxq2j"]
+[gd_scene load_steps=5 format=3 uid="uid://06frq3xt370x"]
 
 [ext_resource type="Script" path="res://Scripts/Game Over Page.gd" id="1_ouc5v"]
 [ext_resource type="Texture2D" uid="uid://bbniyk0wx322f" path="res://Assets/Texture.png" id="2_0n3ql"]
+[ext_resource type="Script" path="res://Scenes/Best score Label.gd" id="3_gs3mm"]
+[ext_resource type="Script" path="res://Scenes/Final Score Label.gd" id="4_myxso"]
 
 [node name="Game Over Page" type="Control"]
 layout_mode = 3
@@ -25,12 +27,31 @@ layout_mode = 2
 
 [node name="Return to Menu Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Return to Menu dumbass"
+text = "Return to Menu. Try again"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
 position = Vector2(574, 327)
 scale = Vector2(0.839177, 1.12018)
 texture = ExtResource("2_0n3ql")
+
+[node name="Best score Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 515.0
+offset_right = 110.0
+offset_bottom = 538.0
+scale = Vector2(3.76215, 5.44164)
+text = "Best Score : "
+script = ExtResource("3_gs3mm")
+
+[node name="Final Score Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+rotation = -0.00628175
+scale = Vector2(4.07028, 4.5592)
+text = "Final Score :"
+script = ExtResource("4_myxso")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Return to Menu Button" to="." method="_on_return_to_menu_button_pressed"]

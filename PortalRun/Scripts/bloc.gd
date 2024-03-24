@@ -1,9 +1,15 @@
 extends CharacterBody3D
 
-var speed = 30
 
 func _physics_process(delta):
-	position.x -= speed * delta
+	position.x -= global.bspeed * delta
+	
+	if global.bspeed < 50 : 
+		global.bspeed += 0.01
+	if global.bspeed > 50 and global.bspeed< 100: 
+		global.bspeed += 0.005
+	if global.bspeed > 100 : 
+		global.bspeed += 0.0003
 
 	move_and_slide()
 

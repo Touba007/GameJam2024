@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c10ws6a7tu8y1"]
+
+[ext_resource type="Script" path="res://Module/Obstacles/bridges.gd" id="1_hiwbh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1n8k"]
+size = Vector3(1.44785, 7.14023, 10.6845)
+
+[sub_resource type="BoxMesh" id="BoxMesh_la24p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p62d"]
+albedo_color = Color(0.27451, 1, 1, 0.545098)
+
+[node name="Bloc" type="CharacterBody3D"]
+transform = Transform3D(1.00626, 0, 0, 0, 1.00626, 0, 0, 0, 0.884928, 0, 0, 0)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hiwbh")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.728646, 1.36901, 0.976013, 0.0206369)
+layers = 2
+aabb = AABB(-2.46519, -3.21155, -7.65441, 4.93037, 7.40332, 15.3088)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999996, 0, 0, 0, 0.999996, 0, 0, 0, 0.556828, 0.549805, 0.798981, 0.186882)
+shape = SubResource("BoxShape3D_y1n8k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 7.65726, 0, 0, 0, 5.69259, 0, 0, 0.0206369)
+layers = 2
+mesh = SubResource("BoxMesh_la24p")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p62d")

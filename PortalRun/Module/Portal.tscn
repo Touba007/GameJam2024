@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dee6yflmuci2g"]
+
+[ext_resource type="Script" path="res://Module/Portal.gd" id="1_t2vjm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fftk4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_udlnc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f15ra"]
+albedo_color = Color(0.101961, 1, 1, 0.466667)
+
+[node name="Portal" type="CharacterBody3D"]
+transform = Transform3D(0.578063, 0, 0, 0, 7.79423, 0, 0, 0, 3.68331, 0, 1.14599, 0)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_t2vjm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fftk4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+layers = 8
+mesh = SubResource("BoxMesh_udlnc")
+surface_material_override/0 = SubResource("StandardMaterial3D_f15ra")

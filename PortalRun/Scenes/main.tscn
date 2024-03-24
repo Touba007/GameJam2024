@@ -1,15 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://yu5nusn7m0gk"]
+[gd_scene load_steps=18 format=3 uid="uid://yu5nusn7m0gk"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_ghon1"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_sf0d4"]
 [ext_resource type="PackedScene" uid="uid://b3xd8bdwcwhlg" path="res://Module/module.tscn" id="2_acncr"]
-[ext_resource type="PackedScene" uid="uid://b0meneuo02s8x" path="res://Module/bloc.tscn" id="2_ujt71"]
+[ext_resource type="PackedScene" uid="uid://bxsvfyrb35aex" path="res://Module/Obstacles/bridges.tscn" id="2_e34ho"]
+[ext_resource type="PackedScene" uid="uid://b0meneuo02s8x" path="res://Module/Obstacles/bloc.tscn" id="2_ujt71"]
 [ext_resource type="PackedScene" uid="uid://clkxiaatx5ti0" path="res://Scenes/player.tscn" id="3_xjd8q"]
+[ext_resource type="PackedScene" uid="uid://d3m5pi0illxh6" path="res://Module/Obstacles/line_block.tscn" id="4_45pog"]
+[ext_resource type="PackedScene" uid="uid://chf7jlq5wigko" path="res://Module/Obstacles/porte1.tscn" id="5_iua3h"]
+[ext_resource type="PackedScene" uid="uid://bwse7povua14a" path="res://Module/Obstacles/porte2.tscn" id="6_jrccx"]
 [ext_resource type="PackedScene" uid="uid://bthpsyfdwk6sm" path="res://Module/Wall.tscn" id="6_xyuie"]
+[ext_resource type="PackedScene" uid="uid://bdsngk1bp1d2l" path="res://Module/Obstacles/porte3.tscn" id="7_nlgtw"]
+[ext_resource type="PackedScene" uid="uid://dee6yflmuci2g" path="res://Module/Portal.tscn" id="8_sloa1"]
+[ext_resource type="Script" path="res://Scenes/Score Label.gd" id="13_1rxxc"]
 
 [sub_resource type="Curve3D" id="Curve3D_abjes"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 191.13, 1, 7.815, 0, 0, 0, 0, 0, 0, 182.12, 1, 7.815, 0, 0, 0, 0, 0, 0, 182.12, 1, -8.365, 0, 0, 0, 0, 0, 0, 191.13, 1, -8.364, 0, 0, 0, 0, 0, 0, 191.13, 1, 7.815),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 196.028, -0.0922604, 7.26634, 0, 0, 0, 0, 0, 0, 182.12, 1, 7.815, 0, 0, 0, 0, 0, 0, 182.12, 1, -8.365, 0, 0, 0, 0, 0, 0, 195.724, 0.502852, -8.20749, 0, 0, 0, 0, 0, 0, 196.099, -0.320192, 7.30011),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -30,14 +37,14 @@ volumetric_fog_enabled = true
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_sf0d4")
-bloc_scene = ExtResource("2_ujt71")
+bloc_scenes = Array[PackedScene]([ExtResource("2_ujt71"), ExtResource("2_e34ho"), ExtResource("4_45pog"), ExtResource("5_iua3h"), ExtResource("6_jrccx"), ExtResource("7_nlgtw"), ExtResource("8_sloa1")])
 
 [node name="Level" type="Node3D" parent="."]
 script = ExtResource("1_ghon1")
 modules = Array[PackedScene]([ExtResource("2_acncr")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.00120137, 0.229435, -0.973323, -0.00509629, 0.97331, 0.229438, 0.999986, 0.00523598, -3.71543e-08, -5.48656, 4.40664, 2.08165e-12)
+transform = Transform3D(-0.00238745, 0.455958, -0.889998, -0.00465999, 0.889986, 0.455964, 0.999986, 0.00523598, -3.84165e-08, -5.48656, 6.84949, 2.08165e-12)
 fov = 81.3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -52,29 +59,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.568, 9.53674e-07, 1.4025
 curve = SubResource("Curve3D_abjes")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 191.13, 1, 7.815)
+transform = Transform3D(-0.0394185, 0.0781723, 0.99616, 0, 0.996935, -0.0782331, -0.999223, -0.00308383, -0.0392977, 196.028, -0.0922604, 7.26634)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.568, 9.53674e-07, 1.40255)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.126, 0, 7.8153)
+transform = Transform3D(2.15097, 0, 0, 0, 1, 0, 0, 0, 1, 176.948, 0, 7.8153)
 mesh = SubResource("CylinderMesh_vf5xx")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.139, 0, 7.8153)
+transform = Transform3D(2.15097, 0, 0, 0, 1, 0, 0, 0, 1, 196.335, 0, 7.8153)
 mesh = SubResource("CylinderMesh_vf5xx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.126, 0, -8.36398)
+transform = Transform3D(2.15097, 0, 0, 0, 1, 0, 0, 0, 1, 176.948, 0, -8.36398)
 mesh = SubResource("CylinderMesh_vf5xx")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.107, 0, -8.36398)
+transform = Transform3D(2.15097, 0, 0, 0, 1, 0, 0, 0, 1, 196.266, 0, -8.36398)
 mesh = SubResource("CylinderMesh_vf5xx")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -85,6 +91,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2486, 0, -7.84764)
 
 [node name="wall2" parent="." instance=ExtResource("6_xyuie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3843, -0.809044, 7.64622)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(2.33486, 2.66013)
+text = "Score : 0"
+script = ExtResource("13_1rxxc")
 
 [connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

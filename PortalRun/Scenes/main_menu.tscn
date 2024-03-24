@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://h35ljhnpxyw"]
+[gd_scene load_steps=4 format=3 uid="uid://b5qrcscj0qn6p"]
 
 [ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_ppjco"]
 [ext_resource type="Texture2D" uid="uid://bbniyk0wx322f" path="res://Assets/Texture.png" id="2_2xdnv"]
+[ext_resource type="Script" path="res://Scenes/Best Score.gd" id="3_biyjj"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -14,10 +15,10 @@ script = ExtResource("1_ppjco")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 383.0
-offset_top = 65.0
-offset_right = 453.0
-offset_bottom = 166.0
+offset_left = 385.0
+offset_top = 122.0
+offset_right = 455.0
+offset_bottom = 223.0
 scale = Vector2(5.65338, 5.27964)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -26,10 +27,6 @@ layout_mode = 2
 [node name="Play Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
-
-[node name="Volume Button" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Volume"
 
 [node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -41,6 +38,15 @@ position = Vector2(577, 324)
 scale = Vector2(0.842017, 1.09277)
 texture = ExtResource("2_2xdnv")
 
+[node name="Best Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 539.0
+offset_right = 117.0
+offset_bottom = 562.0
+scale = Vector2(2.62511, 3.99283)
+text = "Best Score : "
+script = ExtResource("3_biyjj")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Volume Button" to="." method="_on_volume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
