@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22pjgehxh5if"]
+
+[ext_resource type="AudioStream" uid="uid://x53iuo3q6iyi" path="res://Assets/Endless Cyber Runner.mp3" id="1_mnq7u"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_mnq7u")
+autoplay = true

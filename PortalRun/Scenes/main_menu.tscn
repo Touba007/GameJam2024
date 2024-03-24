@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://h35ljhnpxyw"]
+
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_ppjco"]
+[ext_resource type="Texture2D" uid="uid://bbniyk0wx322f" path="res://Assets/Texture.png" id="2_2xdnv"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ppjco")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 65.0
+offset_right = 453.0
+offset_bottom = 166.0
+scale = Vector2(5.65338, 5.27964)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Volume Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(577, 324)
+scale = Vector2(0.842017, 1.09277)
+texture = ExtResource("2_2xdnv")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Volume Button" to="." method="_on_volume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
