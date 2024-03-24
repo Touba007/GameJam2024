@@ -16,7 +16,7 @@ var iscrouch = 0
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	if has_touched_portal == 1: 
-		if i == 30 :
+		if i == 45 :
 			has_touched_portal = 0
 			i = 0
 		else : 
