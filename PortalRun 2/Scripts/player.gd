@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+signal hit
 
 # How fast the player moves in meters per second.
 @export var speed = 14
@@ -11,7 +11,6 @@ var target_velocity = Vector3.ZERO
 
 
 func _physics_process(delta):
-	print (is_on_floor())
 	var direction = Vector3.ZERO
 
 	if Input.is_action_pressed("move_right"):
@@ -36,3 +35,15 @@ func _physics_process(delta):
 	# Moving the Character
 	velocity = target_velocity
 	move_and_slide()
+
+
+# And this function at the bottom.
+func die():
+	hit.emit()
+	queue_free()
+
+
+func _on_death_detector_body_entered(_body):
+	print("HELOOOOO")
+	die()
+

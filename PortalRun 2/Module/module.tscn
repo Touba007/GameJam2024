@@ -13,11 +13,14 @@ script = ExtResource("1_qe2ew")
 mob_scene = ExtResource("2_s7h2m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(-6.55671e-07, -2.09272e-16, -50, 5.2318e-15, 0.6, -1.74393e-14, 15, -2.09272e-16, -2.18557e-06, 0, 0, 0)
+layers = 4
 mesh = SubResource("BoxMesh_enm1h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-6.55671e-07, -2.09272e-16, -50, 5.2318e-15, 0.6, -1.74393e-14, 15, -2.09272e-16, -2.18557e-06, 0, 0, 0)
+transform = Transform3D(-6.53044e-07, -2.08434e-16, -49.7997, 5.21084e-15, 0.597596, -1.73694e-14, 14.9399, -2.08434e-16, -2.17681e-06, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_wiuqt")

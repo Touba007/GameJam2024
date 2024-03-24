@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8nb83qar71sl"]
+[gd_scene load_steps=11 format=3 uid="uid://c8nb83qar71sl"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_ghon1"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_sf0d4"]
 [ext_resource type="PackedScene" uid="uid://b3xd8bdwcwhlg" path="res://Module/module.tscn" id="2_acncr"]
 [ext_resource type="PackedScene" uid="uid://b0meneuo02s8x" path="res://Module/bloc.tscn" id="2_ujt71"]
 [ext_resource type="PackedScene" uid="uid://clkxiaatx5ti0" path="res://Scenes/player.tscn" id="3_xjd8q"]
+[ext_resource type="PackedScene" uid="uid://bthpsyfdwk6sm" path="res://Module/Wall.tscn" id="6_01nub"]
+[ext_resource type="PackedScene" uid="uid://b8udiyw7qyskf" path="res://Module/Back_death.tscn" id="7_yxxsp"]
 
 [sub_resource type="Curve3D" id="Curve3D_abjes"]
 _data = {
@@ -39,14 +41,14 @@ light_volumetric_fog_energy = 12.0
 [node name="player" parent="." instance=ExtResource("3_xjd8q")]
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.568, 9.53674e-07, 1.40255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.542168, -156.05, 9.53674e-07, 0.406945)
 curve = SubResource("Curve3D_abjes")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 191.13, 1, 7.815)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.568, 9.53674e-07, 1.40255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.542168, -156.05, 9.53674e-07, 0.406945)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.126, 0, 7.8153)
@@ -65,7 +67,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.107, 0, -8.36398)
 mesh = SubResource("CylinderMesh_vf5xx")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="RigidBody3D" parent="Walls" instance=ExtResource("6_01nub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.662, 0, -7.90842)
+
+[node name="RigidBody3D2" parent="Walls" instance=ExtResource("6_01nub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9269, 0, 7.1876)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("7_yxxsp")]
+transform = Transform3D(-0.0344957, 0, -0.978267, 0, 2.15546, 0, 2.68525, 0, -0.0125672, -8.71787, 2.8001, -6.16733)
+disable_mode = 2
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
